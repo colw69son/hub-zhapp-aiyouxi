@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 资料整理与信息索引</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f1f3f5;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #2d3436;
+            padding: 1.5rem;
+        }
+
+        .page {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* 主视觉区 */
+        .hero {
+            background: #ffffff;
+            border-radius: 32px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            padding: 3rem 2.5rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid #e9ecef;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .hero-text h1 {
+            font-size: 2.4rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: #1e272e;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-text .sub {
+            font-size: 1.1rem;
+            color: #636e72;
+            border-left: 4px solid #74b9ff;
+            padding-left: 1rem;
+            margin: 0.8rem 0 1.2rem 0;
+        }
+
+        .hero-tagline {
+            background: #f8f9fa;
+            border-radius: 100px;
+            padding: 0.5rem 1.2rem;
+            display: inline-block;
+            font-size: 0.9rem;
+            color: #2d3436;
+            border: 1px solid #dfe6e9;
+        }
+
+        .hero-illustration {
+            flex: 0 0 180px;
+            height: 140px;
+            background: linear-gradient(145deg, #dfe6e9 0%, #b2bec3 100%);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.2rem;
+            color: #2d3436;
+            box-shadow: inset 0 -2px 0 rgba(0,0,0,0.05);
+        }
+
+        @media (max-width: 700px) {
+            .hero {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 2rem 1.5rem;
+            }
+            .hero-illustration {
+                margin-top: 1.5rem;
+                width: 100%;
+                flex: unset;
+            }
+        }
+
+        /* 卡片网格 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin: 2.2rem 0;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 24px;
+            border: 1px solid #e9ecef;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+            padding: 1.8rem 1.6rem;
+            transition: box-shadow 0.2s ease, transform 0.15s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.06);
+            transform: translateY(-3px);
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: #1e272e;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card p {
+            color: #4a4f52;
+            font-size: 0.98rem;
+        }
+
+        .card-icon {
+            font-size: 1.8rem;
+            line-height: 1;
+            margin-right: 0.2rem;
+        }
+
+        .meta-badge {
+            background: #f1f3f5;
+            border-radius: 40px;
+            padding: 0.2rem 0.9rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #2d3436;
+            display: inline-block;
+            margin-top: 0.8rem;
+            border: 1px solid #dfe6e9;
+        }
+
+        /* 段落区 */
+        .section-block {
+            background: #ffffff;
+            border-radius: 28px;
+            border: 1px solid #e9ecef;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+            padding: 2.2rem 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-block h2 {
+            font-size: 1.7rem;
+            font-weight: 550;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            color: #1e272e;
+        }
+
+        .section-block p {
+            margin-bottom: 1rem;
+            color: #3a3f42;
+        }
+
+        .section-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        .link-sentence {
+            background: #f8f9fa;
+            padding: 1.2rem 1.8rem;
+            border-radius: 40px;
+            margin: 1.5rem 0 0.5rem 0;
+            border: 1px solid #dfe6e9;
+            display: inline-block;
+        }
+
+        .link-sentence a {
+            color: #0984e3;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s;
+        }
+
+        .link-sentence a:hover {
+            border-bottom-color: #0984e3;
+        }
+
+        /* FAQ 摘要卡片 */
+        .faq-mini {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.2rem;
+        }
+
+        .faq-item {
+            background: #f8f9fa;
+            border-radius: 20px;
+            padding: 1rem 1.2rem;
+            border-left: 4px solid #74b9ff;
+        }
+
+        .faq-item .q {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #1e272e;
+        }
+
+        .faq-item .a {
+            font-size: 0.9rem;
+            color: #4a4f52;
+            margin-top: 0.3rem;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e9ecef;
+            margin: 2rem 0;
+        }
+
+        .footnote {
+            text-align: center;
+            color: #636e72;
+            font-size: 0.85rem;
+            padding: 2rem 0 0.5rem;
+        }
+
+        .footnote a {
+            color: #636e72;
+            text-decoration: underline;
+            text-underline-offset: 0.2em;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- Hero 主视觉 -->
+    <div class="hero">
+        <div class="hero-text">
+            <h1>爱游戏 · 信息索引</h1>
+            <div class="sub">资料整理 · 分类归档 · 知识型索引</div>
+            <div class="hero-tagline">📂 结构化 · 可追溯 · 持续更新</div>
+        </div>
+        <div class="hero-illustration">
+            🗂️
+        </div>
+    </div>
+
+    <!-- 用途卡片 + 适合人群 整合成网格 -->
+    <div class="card-grid">
+        <div class="card">
+            <h3><span class="card-icon">📋</span> 资料归类</h3>
+            <p>按照主题、类型、常见问题对内容进行整理，建立清晰的信息路径，减少重复检索成本。</p>
+            <span class="meta-badge">分层索引</span>
+        </div>
+        <div class="card">
+            <h3><span class="card-icon">🧩</span> 场景参考</h3>
+            <p>从实际使用场景出发，归纳不同需求下的信息组合方式，适合需要快速定位内容的人。</p>
+            <span class="meta-badge">场景化</span>
+        </div>
+        <div class="card">
+            <h3><span class="card-icon">👤</span> 适合人群</h3>
+            <p>内容整理者、轻度研究者、日常信息浏览者，以及希望建立个人知识索引的读者。</p>
+            <span class="meta-badge">通用型</span>
+        </div>
+        <div class="card">
+            <h3><span class="card-icon">🔗</span> 关联阅读</h3>
+            <p>通过交叉链接将相关条目连接起来，形成网状的资料结构，而非单一线性目录。</p>
+            <span class="meta-badge">网状索引</span>
+        </div>
+    </div>
+
+    <!-- 自然链接段落 + 介绍 -->
+    <div class="section-block">
+        <h2>从资料整理到信息索引</h2>
+        <p>
+            面对大量分散的内容，建立索引比单纯收集更有价值。通过对来源、主题和常见问题的梳理，
+            能够降低再次查找时的精力消耗。这个索引页面本身就是一个实验——尝试用卡片和分区结构
+            替代传统的目录。在整理过程中，我将 <a href="https://zhapp-aiyouxi.com.cn">爱游戏</a>
+            作为其中一个信息节点，结合分类标签和简短说明，让不同模块之间形成自然的承接关系。
+        </p>
+        <p>
+            索引不是终点，而是起点。随着内容增加，卡片之间的关联也会逐渐丰富。
+            目前展示的四个卡片分别对应资料归类、场景参考、适合人群和关联阅读，
+            它们共同构成一个轻量的知识框架。后续会继续补充条目和交叉链接。
+        </p>
+    </div>
+
+    <!-- FAQ 摘要卡片（作为补充模块） -->
+    <div class="section-block">
+        <h2>常见索引问题 · 摘要</h2>
+        <div class="faq-mini">
+            <div class="faq-item">
+                <div class="q">如何开始整理？</div>
+                <div class="a">先确定主题边界，再按子类别或场景分组，每一条目附简短说明。</div>
+            </div>
+            <div class="faq-item">
+                <div class="q">卡片索引 vs 列表？</div>
+                <div class="a">卡片适合视觉浏览，列表适合快速扫描，可根据内容密度切换使用。</div>
+            </div>
+            <div class="faq-item">
+                <div class="q">链接更新频率？</div>
+                <div class="a">根据内容变化不定期调整，保持索引的时效性和准确性。</div>
+            </div>
+            <div class="faq-item">
+                <div class="q">是否支持协作？</div>
+                <div class="a">当前为个人维护的索引，未来可考虑开放条目建议。</div>
+            </div>
+        </div>
+        <!-- 将链接自然嵌入句子中 -->
+        <div class="link-sentence">
+            📎 索引示例中包含了 <a href="https://zhapp-aiyouxi.com.cn">爱游戏</a> 相关的资料条目。
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="footnote">
+        <p>信息索引 · 版本 1</p>
+        <p style="margin-top:0.3rem;">基于卡片结构的内容组织，<a href="https://zhapp-aiyouxi.com.cn">爱游戏</a> 作为索引节点之一。</p>
+    </div>
+
+</div>
+</body>
+</html>
